@@ -11,6 +11,21 @@ import random as r
 # print(f'Сумма элементов на нечетных позициях (индексах) равна {sum(lst[1::2])}')
 
 
+# Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент,
+# второй и предпоследний и т.д.
+# Пример:
+# - [2, 3, 4, 5, 6] => [12, 15, 16];
+# - [2, 3, 5, 6] => [12, 15]
+
+random_lst = [r.randint(1, 5) for i in range(r.randint(4, 7))]
+print('Список случайных чисел:', random_lst)
+len_lst = len(random_lst)
+mult_lst = [random_lst[i] * random_lst[-i - 1] for i in range(len_lst // 2)]
+if len_lst % 2 == 1:
+    mult_lst.append(random_lst[len_lst // 2] ** 2)
+print('Список произведения пар чисел:', mult_lst)
+
+
 # # Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным и
 # # минимальным значением дробной части элементов.
 # # Пример:
@@ -36,34 +51,37 @@ import random as r
 # print(result[::-1])  # или print(bin(number)[2:])
 
 
-# Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
-# Пример:
-# - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
-
-def fibonacci(n):
-    if n in (1, 2):
-        return 1
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-def reversed_fibonacci(n):
-    if n in (1, 2):
-        return 1
-    return reversed_fibonacci(n + 2) - reversed_fibonacci(n + 1)
-
-def negafibonacci() -> list:
-    a = []
-    b = []
-    try:
-        n = int(input("Введите число для последовательности Фибоначчи:"))
-        if type(n) in [int]:
-            for i in range(-n, n + 1):
-                if i > 0:
-                    a.append((fibonacci(i)))
-                else:
-                    b.append(reversed_fibonacci(i))
-            return f'- для k={n} список будет выглядеть так: {b + a}'
-    except ValueError as e:
-        print(e)
-        return negafibonacci()
-
-print(negafibonacci())
+# # Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+# # Пример:
+# # - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
+#
+# def fibonacci(n):
+#     if n in (1, 2):
+#         return 1
+#     return fibonacci(n - 1) + fibonacci(n - 2)
+#
+#
+# def reversed_fibonacci(n):
+#     if n in (1, 2):
+#         return 1
+#     return reversed_fibonacci(n + 2) - reversed_fibonacci(n + 1)
+#
+#
+# def negafibonacci() -> list:
+#     a = []
+#     b = []
+#     try:
+#         n = int(input("Введите число для последовательности Фибоначчи:"))
+#         if type(n) in [int]:
+#             for i in range(-n, n + 1):
+#                 if i > 0:
+#                     a.append((fibonacci(i)))
+#                 else:
+#                     b.append(reversed_fibonacci(i))
+#             return f'- для k={n} список будет выглядеть так: {b + a}'
+#     except ValueError as e:
+#         print(e)
+#         return negafibonacci()
+#
+#
+# print(negafibonacci())
